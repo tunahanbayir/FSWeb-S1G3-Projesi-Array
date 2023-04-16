@@ -35,14 +35,14 @@ Tüm bu değişiklikleri yaparken, gerçek, orijinal 25 lezzetin listesini kaybe
 
 /*
 Aşağıdakileri yapmak için aşağıdaki kopyalama işlevini kullanın:
-   1. parametre olarak bir dizi alın - işlev çağrıldığında orijinalTatlar'i argüman olarak ileteceksiniz.
+ 1. parametre olarak bir dizi alın - işlev çağrıldığında orijinalTatlar'i argüman olarak ileteceksiniz.
    2. Alınan dizinin bir kopyasını döndür
 */
 
 
-function kopyala(/*kod buraya*/){
-  /*kod buraya*/
-}
+function kopyala(arr){const kopyaArr = [ ...arr ];
+return kopyaArr;
+};
 
 
 /* Görev 2:
@@ -56,9 +56,11 @@ Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları ka
 */
 
 
-function dizi25Cesitmi(/*kod buraya*/){
-  /*kod buraya*/
+function dizi25Cesitmi(tatlar){ 
+  return tatlar.length == 25; 
 }
+
+console.log("dizi25cesitmi >", dizi25Cesitmi(orijinalTatlar));
 
 
 /* Görev 3:
@@ -74,8 +76,9 @@ Aşağıdakileri yapmak için cesitEkle işlevini kullanın:
 */
 
 
-function cesitEkle(/*kod buraya*/){
-  /*kod buraya*/
+function cesitEkle(arr, yeniTat){const newArr = [ ... arr ]; newArr.unshift(yeniTat);
+  return newArr;
+  
 }
 
 
@@ -92,8 +95,10 @@ Aşağıdakileri yapmak için sonCesitiKaldir işlevini kullanın:
 */
 
 
-function sonCesitiKaldir(/*kod buraya*/){
-  /*kod buraya*/
+function sonCesitiKaldir(arr){const cloneArr = [ ...arr ];
+  cloneArr.pop()
+  return cloneArr;
+
 }
 
 
@@ -108,8 +113,8 @@ Aşağıdakileri yapmak için aşağıdaki indekstekiCesitiGetir işlevini kulla
    Örneğin: indekstekiCesitiGetir(orijinalTatlar, 2) çalıştırılmasıyla, Kakule'in başarıyla eklendiği varsayarsak sonuç "Ceviz" olucaktır.
 */
 
-function indekstekiCesitiGetir(/*kod buraya*/){
-  /*kod buraya*/
+function indekstekiCesitiGetir(arr, index){return arr[index];
+  
 }
 
 
@@ -128,8 +133,12 @@ Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
   İPUCU: Bunun için .splice() kullanabilirsiniz.
 */
 
-function ismeGoreCesitCikar(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreCesitCikar(arr, tat){const cloneArr = [ ...arr ]
+  const index = arr.indexOf(tat);
+  if (index != -1) {cloneArr.splice(index, 1);  }
+  return cloneArr
+
+  
 }
 
 
@@ -154,9 +163,21 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
 */
 
 
-function ismeGoreFiltrele(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreFiltrele(orijinalTatlar, searchText) {
+  const istenenUrunler = [];
+  for (let i = 0; i < orijinalTatlar.length; i++) {
+    let malzeme = orijinalTatlar[i];
+    if (malzeme.includes(searchText) == true) {
+      istenenUrunler.push(malzeme); 
+    }
+  }
+return istenenUrunler;
 }
+
+console.log("ismeGoreFiltrele >>" , ismeGoreFiltrele(orijinalTatlar, "Çikolata"));
+
+
+
 
 
 
